@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <a v-bind:href="link"> gogogo</a>
+        <!-- class,style 的特殊处理 -->
+        <!-- {classname:?} -->
+        <span v-bind:class="{active:isActive,'text-danger':hasError}"></span>
+        <!-- {stylename:val} -->
+        <span v-bind:style="{color:colorVal,'font-size':sizeVal}">style</span>
+
+        <!-- simple write -->
+        <!-- v-bind:key = :key  -->
+        <!-- v-bind 为单向绑定 即 model -》view -->
+    </div>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    link: "http://www.baidu.com",
+                    isActive:true,
+                    hasError:TextTrackCue,
+                    colorVal:'red',
+                    sizeVal:'36px'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

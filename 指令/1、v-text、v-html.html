@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}} {{1+1}} {{ hello() }} <br>
+        <span v-html='msg'></span> <br>
+        <span v-text="msg"></span> <br>
+        <a :href='link'>baidu</a>
+    </div>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+
+    <script>
+        let vmt = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    msg: '<h1>hello<h1/>', // {{}} 插值表达式网速慢时会有页面暂存
+                    link: 'http://www.baidu.com'
+                }
+            },
+            methods: {
+                hello() {
+                    return 'hello'
+                }
+            },
+        })
+
+        // 插值表达式 
+        // 为dom标签标签内容（标签体）绑定属性
+        //  {{ }} 、v-html、v-text 为单向绑定 即 model -》view 
+
+    </script>
+</body>
+
+</html>

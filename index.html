@@ -9,16 +9,37 @@
 
 <body>
   <div id="app">
-    <h1>{{name}},hello world</h1>
+    <input type="text" v-model='num'>
+    <button v-on:click="num++">add people</button>
+    <button v-on:click="reduceP">reduceP</button>
+    <h1>{{name}},hello world，here is {{num}} people</h1>
   </div>
   <script src="/node_modules/vue/dist/vue.js"></script>
   <script>
+    // 1、vue声明式渲染\双向绑定
     let vm = new Vue({
-      el: '#app',
-      data: {
-        name: 'zhangsan'
+      el: '#app', //绑定元素
+      data() {//封装数据
+        return {
+          name: 'zhangsan',
+          num: 1
+        }
       },
+      methods: {//封装方法
+        reduceP() {
+          this.num--
+        }
+      }
     })
+
+    //2、双向绑定。模型变化。视图变化。反之依然
+
+    //3、事件处理 v-xx:指令
+
+    // vue简单使用
+    // 1.创建vue实例，关联页面模版，将vue对data数据渲染到关联到模版tenplate上，响应式
+    // 2.指令简化对dom对操作
+    // 3.声明方法，进行复杂操作
   </script>
 </body>
 
