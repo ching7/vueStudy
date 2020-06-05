@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <!-- 双向数据绑定 表单项、自定义组件 -->
-    <div id="app">
-        精通language:
-        <input type="checkbox" v-model='language' value="java">java</input>
-        <input type="checkbox" v-model='language' value="php">php</input>
-        <input type="checkbox" v-model='language' value="python">python</input>
-        选择：{{language.join(",")}}
-    </div>
-    <script src="/node_modules/vue/dist/vue.js"></script>
-    <script>
-        let vm = new Vue({
-            el:"#app",
-            data() {
-                return {
-                    language:[]
-                }
-            },
-        })
-    </script>
+  <!-- 双向数据绑定 表单项、自定义组件 -->
+  <div id="app">
+    精通language:
+    <input type="checkbox" v-model='language' value="java">java</input>
+    <input type="checkbox" v-model='language' value="php">php</input>
+    <input type="checkbox" v-model='language' value="python">python</input>
+    选择：{{language.join(",")}}
+  </div>
+  <script src="/node_modules/vue/dist/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data() {
+        return {
+          language: []
+        }
+      },
+      watch: {
+        language: function (val) {
+          console.log(this.language.join(","), 'watch')
+        }
+      }
+    })
+  </script>
 </body>
+
 </html>
