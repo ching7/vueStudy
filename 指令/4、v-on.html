@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model='num'>
+    <button v-on:click="num++">add people</button>
+    <button v-on:click="reduceP">reduceP</button>
+
+    <!-- 事件修饰符 -->
+    <div style="border: 1px solid red;padding: 20px;" @click.once='hello'>
+      <button style="border: 1px solid green;padding: 20px;" @click.stop='hello'>
+        <!-- @click.prevent阻止默认行为 -->
+        <a href="" @click.prevent.stop='hello'>Test</a>
+      </button>
+    </div>
+
+    <!-- 按键修饰符 -->
+    <input type="text" v-model='num' v-on:keyup.up='num++' @keyup.down='num--' @click.ctrl='num+=10'>
+    <h1>{{name}},hello world，here is {{num}} people</h1>
+  </div>
+  <script src="/node_modules/vue/dist/vue.js"></script>
+  <script>
+    // 1、vue声明式渲染\双向绑定
+    let vm = new Vue({
+      el: '#app', //绑定元素
+      data() { //封装数据
+        return {
+          name: 'zhangsan',
+          num: 1
+        }
+      },
+      methods: { //封装方法
+        reduceP() {
+          this.num--
+        },
+        hello() {
+          alert('hello')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(user,index) in users" :key="user.name">
+        now index ==> {{index}} ==> {{user.name}} ==> {{user.gender}} ==> {{user.age}} <br>
+        object:
+        <span v-for="(val,key,idx) in user"> {{val}} == {{key}} == {{idx}} </span>
+      </li>
+      <!-- 1 显示user信息，v-for="item in items" -->
+      <!-- 2 获取数组下标，v-for="(item,index) in items" -->
+      <!-- 
+        3 遍历对象
+        v-for="(value,key,index) in user"
+       -->
+      <!-- 4 遍历时加上:key 区分不同数据，提高vue渲染效率 -->
+    </ul>
+
+    <!-- 一般带上index做索引，即使数据中没有，会自动生成 -->
+    <ul>
+      <li v-for='(num,index) in nums'>
+        {{num}} ==> {{index}}
+      </li>
+    </ul>
+  </div>
+  <script src="/node_modules/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          users: [{
+            name: 'zhangsan',
+            gender: 'women',
+            age: 21
+          }, {
+            name: 'lisi',
+            gender: 'men',
+            age: 18
+          }, {
+            name: 'wangwu',
+            gender: 'men',
+            age: 22
+          }, ],
+          nums: [1, 2, 3, 4, 5, 5]
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>
