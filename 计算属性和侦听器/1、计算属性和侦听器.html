@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li>西游记：价格 {{xyjPrice}}，数量 <input type="number" v-model="xyjNum"></li>
+            <li>水浒传：价格 {{shzPrice}}，数量 <input type="number" v-model="shzNum"></li>
+            <li>总价 {{totalPrice}}</li>
+            <li>{{msg}}</li>
+        </ul>
+    </div>
+    <script src="/node_modules/vue/dist/vue.js"></script>
+
+    <script>
+        let vmt = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    msg: '',
+                    xyjPrice: 20.3, // {{}} 插值表达式网速慢时会有页面暂存
+                    shzPrice: 15,
+                    xyjNum: 1,
+                    shzNum: 1
+                }
+            },
+
+            // computed:某些数据是根据之前的数据实时计算出来的，可以利用计算属性来完成
+            computed: {
+                totalPrice() {
+                    return this.xyjPrice * this.xyjNum + this.shzPrice * this.shzNum
+                }
+            },
+            // watch:监控某一个值的变化，从而作出相应的变化
+            watch: {
+                xyjNum(newVal, oldVal) {
+                    console.log('newval===', newVal, 'oldVal===', oldVal)
+                    if (newVal >= 3) {
+                        this.xyjNum = 3
+                        this.msg = 'too much'
+
+                    } else {
+                        this.msg = ' '
+
+                    }
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
